@@ -18,13 +18,13 @@ export const Navbar = ({ onOpenQR }: NavbarProps) => {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 right-0 z-[500] flex justify-between items-center px-6 py-5 md:px-10 md:py-7 bg-ink/20 backdrop-blur-md border-b border-white/5"
       >
-        <div className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
           <img src="/logo.svg" alt="DobraX Logo" className="w-8 h-8 md:w-10 md:h-10" />
           <span className="font-display text-xl md:text-2xl tracking-wider text-white uppercase flex items-baseline gap-1">
             {CONTENT.nav.logo}
             <sup className="font-mono text-[10px] tracking-widest text-amber uppercase">{CONTENT.nav.ticker}</sup>
           </span>
-        </div>
+        </a>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-10">
