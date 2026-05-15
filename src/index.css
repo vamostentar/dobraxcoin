@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #050404;
+  --paper: #F2EDE6;
+  --amber: #E09B1A;
+}
+
+@layer base {
+  body {
+    @apply bg-ink text-paper font-serif overflow-x-hidden selection:bg-amber selection:text-ink;
+  }
+
+  /* Only hide cursor on devices with a precise pointer (mouse) */
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* GRAIN EFFECT */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* FAQ Accordion */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer > div {
+  overflow: hidden;
+}
+
+/* Scroll indicator pulse */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+/* Testimonial card hover glow */
+.testimonial-card {
+  transition: border-color 500ms, background-color 500ms;
+}
+.testimonial-card:hover {
+  border-color: rgba(224, 155, 26, 0.15);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Lead capture input */
+.lead-input {
+  transition: border-color 300ms, box-shadow 300ms;
+}
+.lead-input:focus {
+  border-color: var(--amber);
+  box-shadow: 0 0 0 3px rgba(224, 155, 26, 0.15);
+  outline: none;
+}
+
+/* Badge shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.badge-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(224,155,26,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* Mobile menu */
+.mobile-menu-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
