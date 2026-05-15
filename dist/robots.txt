@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /dist/
-
-Sitemap: https://dobraxcoin.com/sitemap.xml
